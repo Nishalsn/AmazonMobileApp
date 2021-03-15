@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [AmazonAppTestSuite]">
+  <test thread-count="5" name="AmazonAppTest(failed)">
+    <classes>
+      <class name="com.automation.amazon.tests.Amazon_TestCase1">
+        <methods>
+          <include name="tearDown"/>
+          <include name="initialiseDriver"/>
+          <include name="test"/>
+        </methods>
+      </class> <!-- com.automation.amazon.tests.Amazon_TestCase1 -->
+    </classes>
+  </test> <!-- AmazonAppTest(failed) -->
+</suite> <!-- Failed suite [AmazonAppTestSuite] -->

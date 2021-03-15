@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name = "AmazonAppTestSuite">
+    <test name = "AmazonAppTest">
+        <classes>
+            <class name = "com.automation.amazon.tests.Amazon_TestCase1">
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,30 +1,38 @@
 package com.automation.amazon;
 
+import com.automation.amazon.listners.TestListener;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.offset.PointOption;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.log4testng.Logger;
-
+import org.testng.annotations.Listeners;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 
 
+@Listeners(TestListener.class)
 public class Base {
 
-    protected static AppiumDriver<WebElement> driver;
+    protected static AppiumDriver<MobileElement> driver;
     protected static WebDriverWait driverWait;
     private static DesiredCapabilities capabilities;
     private static TouchAction<?> action = null;
@@ -57,7 +65,7 @@ public class Base {
         capabilities.setCapability(AndroidMobileCapabilityType.ANDROID_NATURAL_ORIENTATION,true);
         capabilities.setCapability("–session-override",true);
         try {
-            driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+            driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
             LoggingTool.logAction("Driver initialized successfully, app is launched");
             System.out.println();
         } catch (MalformedURLException e) {
@@ -137,9 +145,28 @@ public class Base {
         Thread.sleep(1000);
         driverWait.until(ExpectedConditions.presenceOfElementLocated(element)).sendKeys(text);
         Thread.sleep(1000);
-        executeTerminalCommand("adb shell input keyevent 66");
+        KeyEvent kEvent = new KeyEvent();
+        ((AndroidDriver<MobileElement>) driver).pressKey(kEvent.withKey(AndroidKey.ENTER));
     }
 
+
+    /**
+     * Used to take a screen shot of the screen when ever test script fails or error appears on screen.
+     *
+     * @return void
+     */
+    public static void takeScreenshot(String status) {
+        try {
+
+            System.out.println("taking screenshot");
+            String pathOfScreenshot = "Screenshot/" + status.toLowerCase() + "/" ;
+            String time = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+            File screenshot = driver.getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshot, new File(pathOfScreenshot + "" + time + ".jpg"));
+        } catch (Exception e) {
+            LoggingTool.logWarning(" couldn't take screenshot");
+        }
+    }
 
     /**
      * Perform scroll action on the screen to move down till the element is displayed or after 10 tries

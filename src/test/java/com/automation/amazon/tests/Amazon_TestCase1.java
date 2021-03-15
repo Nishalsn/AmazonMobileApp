@@ -32,6 +32,7 @@ public class Amazon_TestCase1 extends Base {
         checkoutPage.navigateToCheckout();
         checkoutPage.processCheckout();
         Assert.assertTrue(productDetails.equals(checkoutPage.getProductDetails()),"There is a mismatch in description and amount of the product in search list and checkout screen");
+        checkoutPage.removeItem();
         LoggingTool.logComment("Product Description & Price data in the search list and Checkout screen matches ");
         LoggingTool.endTest("Amazon_App_Automation");
     }
@@ -39,9 +40,5 @@ public class Amazon_TestCase1 extends Base {
 
 
 
-    @AfterMethod
-    public void afterTest(){
-        checkoutPage.removeItem();
-    }
 
 }

@@ -2,9 +2,8 @@ package com.automation.amazon.pages;
 
 import com.automation.amazon.Base;
 import com.automation.amazon.LoggingTool;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,9 +39,9 @@ public class HomeScreen extends Base {
     public HashMap selectRandomItemFromSearchList() throws Exception{
         LoggingTool.logStep("Selecting a random item from the search list ");
         Thread.sleep(1000);
-        List<WebElement> searchElementList = driver.findElements(descriptionId);
+        List<MobileElement> searchElementList = driver.findElements(descriptionId);
         int randomNumber = generateARandomNumber(1, searchElementList.size()-1);
-        WebElement element=  searchElementList.get(randomNumber);
+        MobileElement element=  searchElementList.get(randomNumber);
         String description= element.findElement(searchElementDescription).getText();
         String price= element.findElement(searchElementPrice).getAttribute("content-desc").split("₹")[1].replaceAll(" ","");
         searchElementList.get(randomNumber).click();
