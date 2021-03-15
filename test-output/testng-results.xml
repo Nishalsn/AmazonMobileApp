@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="AmazonAppTestSuite" duration-ms="96021" started-at="2021-03-15T13:07:49 IST" finished-at="2021-03-15T13:09:25 IST">
+    <groups>
+    </groups>
+    <test name="AmazonAppTest" duration-ms="96021" started-at="2021-03-15T13:07:49 IST" finished-at="2021-03-15T13:09:25 IST">
+      <class name="com.automation.amazon.tests.Amazon_TestCase1">
+        <test-method status="PASS" signature="initialiseDriver()[pri:0, instance:com.automation.amazon.tests.Amazon_TestCase1@17d0685f]" name="initialiseDriver" is-config="true" duration-ms="15171" started-at="2021-03-15T13:07:49 IST" finished-at="2021-03-15T13:08:04 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialiseDriver -->
+        <test-method status="PASS" signature="test()[pri:0, instance:com.automation.amazon.tests.Amazon_TestCase1@17d0685f]" name="test" duration-ms="78841" started-at="2021-03-15T13:08:04 IST" finished-at="2021-03-15T13:09:23 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.automation.amazon.tests.Amazon_TestCase1@17d0685f]" name="tearDown" is-config="true" duration-ms="1334" started-at="2021-03-15T13:09:24 IST" finished-at="2021-03-15T13:09:25 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.automation.amazon.tests.Amazon_TestCase1 -->
+    </test> <!-- AmazonAppTest -->
+  </suite> <!-- AmazonAppTestSuite -->
+</testng-results>
