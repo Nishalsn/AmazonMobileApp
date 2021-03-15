@@ -1,6 +1,5 @@
 .idea/**
 .idea/.name
-*.xml
 .idea/vcs.xml
 .idea/compiler.xml
 *.class
